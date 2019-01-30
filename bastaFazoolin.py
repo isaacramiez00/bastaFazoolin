@@ -11,6 +11,18 @@ class Menu:
     def __repr__(self):
         return "This is the {name} menu. This menu is available from {start_time} to {end_time}.".format(name = self.name, start_time = self.start_time, end_time = self.end_time)
 
+    #purchased_items is a list
+    def calculate_bill(self, purchased_items):
+      total_price = 0
+      #for pItem in purchased_items:
+      for pItem in purchased_items:
+        if pItem in self.items:
+          total_price += self.items.get(pItem)
+      return total_price
+
+      
+
+
 
 brunch = Menu("Brunch", {
   'pancakes': 7.50, 'waffles': 9.00, 'burger': 11.00, 'home fries': 4.50, 'coffee': 1.50, 'espresso': 3.00, 'tea': 1.00, 'mimosa': 10.50, 'orange juice': 3.50
@@ -28,4 +40,10 @@ kids = Menu("Kids", {
   'chicken nuggets': 6.50, 'fusilli with wild mushrooms': 12.00, 'apple juice': 3.00
 }, "11:00", "21:00")
 
-print(brunch)
+#executes: "This is the Brunch menu. This menu is available from 11:00 to 16:00."
+#print(brunch)
+
+#13.5
+#print(brunch.calculate_bill(['pancakes', 'home fries', 'coffee']))
+
+print(early_bird.calculate_bill(['salumeria plate', 'mushroom ravioli (vegan)']))
